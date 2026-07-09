@@ -1,0 +1,230 @@
+# Migration Framework
+
+> Framework para Descoberta, Normalização e Migração de Categorias para o Edocman
+
+---
+
+## Sobre o Projeto
+
+O **Migration Framework** é um framework desenvolvido em Python com o objetivo de automatizar o processo de migração de documentos entre diferentes sistemas para o componente **Edocman** do Joomla.
+
+Diferentemente de uma simples ferramenta de importação de dados, o framework foi projetado para identificar automaticamente categorias, normalizar informações provenientes da base de origem e criar os relacionamentos necessários entre documentos e categorias no banco de dados de destino.
+
+O projeto surgiu da necessidade de reduzir o tempo gasto em migrações, eliminar processos manuais e criar uma solução reutilizável para diferentes clientes.
+
+---
+
+## Problema
+
+Cada cliente possui uma estrutura diferente de banco de dados.
+
+Em muitos casos:
+
+- não existe uma tabela de categorias;
+- a categoria está armazenada dentro da própria tabela de documentos;
+- os nomes seguem padrões diferentes;
+- existem categorias pai e categorias filhas;
+- o relacionamento entre documentos e categorias precisa ser criado manualmente.
+
+O processo tradicional utiliza consultas SQL, planilhas Excel e comparações manuais, tornando a migração lenta e suscetível a erros.
+
+---
+
+## Solução
+
+O framework automatiza todo esse processo.
+
+```text
+Banco de Origem
+        │
+        ▼
+Extração SQL
+        │
+        ▼
+Discovery
+        │
+        ▼
+Categoria Descoberta
+        │
+        ▼
+Categoria Pai
+        │
+        ▼
+Extração do Ano
+        │
+        ▼
+Normalização
+        │
+        ▼
+Construção da Categoria Final
+        │
+        ▼
+Busca da Categoria no Edocman
+        │
+        ▼
+Obtenção do category_id
+        │
+        ▼
+Relacionamento
+GWS_edocman_document_category
+        │
+        ▼
+Relatórios
+```
+
+---
+
+# Objetivos
+
+O framework possui os seguintes objetivos:
+
+- Automatizar migrações;
+- Eliminar atividades manuais;
+- Reduzir utilização de Excel;
+- Descobrir categorias automaticamente;
+- Normalizar dados;
+- Construir categorias de forma padronizada;
+- Criar relacionamentos automaticamente;
+- Gerar logs e relatórios;
+- Reutilizar código em diferentes clientes.
+
+---
+
+# Tecnologias
+
+O projeto utiliza:
+
+- Python 3
+- Pandas
+- SQLAlchemy
+- PyMySQL
+- RapidFuzz
+- MySQL / MariaDB
+- VS Code
+
+---
+
+# Estrutura do Projeto
+
+```text
+migration-framework/
+
+│
+├── docs/
+│   ├── 00_HOME.md
+│   ├── 01_ERS.md
+│   ├── 02_OBJETIVO.md
+│   ├── 03_ESCOPO.md
+│   ├── 04_PROBLEMA_ATUAL.md
+│   ├── 05_VISAO_GERAL.md
+│   ├── 06_REQUISITOS_FUNCIONAIS.md
+│   ├── 07_REQUISITOS_NAO_FUNCIONAIS.md
+│   ├── 08_ARQUITETURA.md
+│   ├── 09_PRINCIPIOS.md
+│   ├── 10_RESULTADO_ESPERADO.md
+│   └── CHANGELOG.md
+│
+├── src/
+├── sql/
+├── config/
+├── logs/
+├── tests/
+│
+└── README.md
+```
+
+---
+
+# Fluxo da Migração
+
+O framework executará as seguintes etapas:
+
+1. Conectar ao banco de origem;
+2. Executar consultas SQL;
+3. Extrair documentos;
+4. Descobrir categorias;
+5. Identificar categoria pai;
+6. Identificar o ano;
+7. Normalizar os dados;
+8. Construir a categoria final;
+9. Localizar a categoria no Edocman;
+10. Obter o `category_id`;
+11. Criar o relacionamento na tabela `GWS_edocman_document_category`;
+12. Validar os resultados;
+13. Gerar relatórios.
+
+---
+
+# Arquitetura
+
+O framework será dividido em módulos independentes.
+
+```text
+Migration Framework
+
+├── Configuração
+├── Banco de Dados
+├── SQL
+├── Extração
+├── Discovery
+├── Normalização
+├── Categoria Pai
+├── Extração do Ano
+├── Construção da Categoria
+├── Busca no Edocman
+├── Relacionamentos
+├── Validação
+├── Logs
+└── Relatórios
+```
+
+Cada módulo possuirá apenas uma responsabilidade, facilitando manutenção e reutilização.
+
+---
+
+# Situação Atual
+
+Atualmente o framework encontra-se em desenvolvimento.
+
+As primeiras versões serão focadas na migração de categorias provenientes do Docman para o Edocman, permitindo posteriormente suporte a outros sistemas de origem.
+
+---
+
+# Roadmap
+
+## Versão 1.0
+
+- Conexão com banco
+- Extração SQL
+- Discovery
+- Normalização
+- Construção das categorias
+- Relacionamento documento × categoria
+
+## Versão 2.0
+
+- Interface gráfica
+- Configuração via YAML
+- Execução por linha de comando
+- Relatórios em HTML
+- Dashboard de execução
+
+## Versão 3.0
+
+- Inteligência Artificial para classificação
+- Sugestão automática de categorias
+- Interface Web
+
+---
+
+# Documentação
+
+Toda a documentação técnica encontra-se na pasta **docs**.
+
+Cada documento descreve uma parte específica do framework.
+
+---
+
+# Licença
+
+Projeto desenvolvido para uso interno como ferramenta de automação de migração de documentos.
