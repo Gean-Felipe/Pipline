@@ -1,0 +1,9 @@
+project_name: Framework de Migração
+
+version: 1.0
+
+log_level: INFO
+
+batch_size: 1000
+
+debug: true

@@ -1,0 +1,9 @@
+trim: true
+
+remove_accents: true
+
+remove_special_characters: true
+
+title_case: true
+
+create_slug: true

@@ -1,0 +1,12 @@
+source:
+  host: localhost
+  port: 3306
+  database: sombraa1_camara_ribeira
+  username: root
+  password: ""
+
+destination:
+  host: localhost
+  user: sombraa1_gwsadmin
+  password: admingws#2024$$
+  db: sombraa1_GWS@cm_Ribeirao_Cascalheira
