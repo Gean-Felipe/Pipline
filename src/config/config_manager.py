@@ -74,7 +74,3 @@ if __name__ == "__main__":
     print(config.database)
 
     print("\nFramework:")
-    print(config.framework)
-
-    print("\nNormalização:")
-    print(config.normalize)
