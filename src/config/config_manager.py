@@ -52,6 +52,20 @@ class ConfigManager:
             # e retorna o resultado para quem chamou o método.
             return yaml.safe_load(file)
 
+    def  get_source_database(self):
+        """
+        Retorna as configurações do banco de dados de origem.
+        """
+
+        return self.database("source")
+    
+    def get_destination_database(self):
+        """
+        Retorna as configurações do banco de dados de destino.
+        """
+
+        return self.database("destination")
+    
 if __name__ == "__main__":
 
     config = ConfigManager()
